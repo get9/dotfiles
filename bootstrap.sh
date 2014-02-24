@@ -6,3 +6,7 @@ ln -s `pwd`/bash/.bash_profile ~
 # vim stuff
 ln -s `pwd`/vim/.vimrc ~
 ln -s `pwd`/vim/.vim ~
+
+# bin/ - filled with useful tools.
+ln -s `pwd`/bin ~
+export PATH=~/bin:$PATH
