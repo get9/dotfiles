@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/felix/Library/Application Support/KeyRemap4MacBook'
-let g:netrw_dirhist_2='/Users/felix/Documents/ee480/minari/LD_ST_Reg'
-let g:netrw_dirhist_3='/Users/felix/Documents/ee480/minari/HVPISys'
-let g:netrw_dirhist_4='/Users/felix/Documents/ee480/minari/ProcessorComponents/DMCache'
-let g:netrw_dirhist_5='/Users/skarlage/tmp'
