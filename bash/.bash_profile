@@ -41,6 +41,9 @@ if [[ "$platform" == "macosx" ]]; then
     export PATH=/usr/local/bin:$PATH
 fi
 
+# LaTeX programs
+export PATH=/usr/texbin:$PATH
+
 # Personal scripts
 export PATH=$HOME/bin:$PATH
 
@@ -50,3 +53,4 @@ alias ll='ls -alh'
 alias u='cd ..'
 alias c='clear'
 alias clang='clang -Weverything'
+alias fix_camera='sudo killall VDCAssistant'
