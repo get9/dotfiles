@@ -1,9 +1,3 @@
-# Prompt
-export PS1="[\t] \u:\w\n$ "
-export CLICOLOR=1
-export GREP_OPTIONS='--color=auto'
-export LSCOLORS=GxFxCxDxBxegedabagaced
-
 # Platform detection
 platform='unknown'
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -23,14 +17,18 @@ elif [[ "$OSTYPE" == "freebsd"* ]]; then
     platform='freebsd'
 fi
 
+# Mac-specific configuration.
 if [[ "$platform" == "macosx" ]]; then
-    # Brew tab-completion
-    source "$(brew --prefix grc)/etc/grc.bashrc"
-    source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
+    # Check if brew is even installed
+    if hash brew 2>/dev/null; then
+        # Brew tab-completion
+        source "$(brew --prefix grc)/etc/grc.bashrc"
+        source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
 
-    # git tab-completion
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-
+        # git tab-completion
+        source /usr/local/etc/bash_completion.d/git-completion.bash
+    fi
+    
     # Ruby gems
     export PATH=/usr/local/opt/ruby/bin:$PATH
     
@@ -39,10 +37,26 @@ if [[ "$platform" == "macosx" ]]; then
     
     # Misc stuff
     export PATH=/usr/local/bin:$PATH
+
+    # More prompt stuff
+    export CLICOLOR=1
+    export GREP_OPTIONS='--color=auto'
+    export LSCOLORS=GxFxCxDxBxegedabagaced
+
+    # LaTeX programs
+    export PATH=/usr/texbin:$PATH
+
+    # Mac-specific aliases
+    alias fix_camera='sudo killall VDCAssistant'
+
+# Linux-specific configuration
+elif [[ "$platform" == "linux" ]]; then
+    # Linux-specific aliases
+    alias ls='ls --color=auto -pF'
 fi
 
-# LaTeX programs
-export PATH=/usr/texbin:$PATH
+# Everything that's common to all platforms
+export PS1="[\t] \u:\w\n$ "
 
 # Personal scripts
 export PATH=$HOME/bin:$PATH
@@ -52,5 +66,3 @@ alias l='ls -lh'
 alias ll='ls -alh'
 alias u='cd ..'
 alias c='clear'
-alias clang='clang -Weverything'
-alias fix_camera='sudo killall VDCAssistant'
