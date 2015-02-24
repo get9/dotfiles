@@ -48,6 +48,7 @@ if [[ "$platform" == "macosx" ]]; then
 
     # Mac-specific aliases
     alias fix_camera='sudo killall VDCAssistant'
+    alias fix_audio='sudo killall coreaudiod'
 
 # Linux-specific configuration
 elif [[ "$platform" == "linux" ]]; then
