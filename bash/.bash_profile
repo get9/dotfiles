@@ -57,7 +57,7 @@ elif [[ "$platform" == "linux" ]]; then
 fi
 
 # Everything that's common to all platforms
-export PS1="[\t] \u:\w\n$ "
+export PS1="[\t] \u@\h:\w\n$ "
 
 # Personal scripts
 export PATH=$HOME/bin:$PATH
