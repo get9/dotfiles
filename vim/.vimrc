@@ -18,10 +18,6 @@ set background=dark
 set t_Co=256
 colorscheme molokai
 
-"Indentation
-set smartindent
-set autoindent
-
 "Searching
 set ignorecase  "searching: automatically ignore case
 set smartcase   "searching: if searching for word with caps, disable ignorecase
