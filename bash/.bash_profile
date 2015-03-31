@@ -54,6 +54,16 @@ if [[ "$platform" == "macosx" ]]; then
 elif [[ "$platform" == "linux" ]]; then
     # Linux-specific aliases
     alias ls='ls --color=auto -pF'
+
+    # Enable bash autocompletion in interactive shells
+    # from: 
+    if ! shopt -oq posix; then
+        if [ -f /usr/share/bash-completion/bash_completion ]; then
+            . /usr/share/bash-completion/bash_completion
+        elif [ -f /etc/bash_completion ]; then
+            . /etc/bash_completion
+        fi
+      fi
 fi
 
 # Everything that's common to all platforms
@@ -67,3 +77,4 @@ alias l='ls -lh'
 alias ll='ls -alh'
 alias u='cd ..'
 alias c='clear'
+alias grep='grep --color=auto'
