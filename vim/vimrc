@@ -19,7 +19,6 @@ Plugin 'wting/rust.vim'
 
 "Molokai colorscheme
 Bundle 'tomasr/molokai'
-colorscheme molokai
 
 "Finish up vundle setup
 call vundle#end()
@@ -34,6 +33,7 @@ set magic
 syntax on
 set background=dark
 set t_Co=256
+colorscheme molokai
 
 "Searching
 set ignorecase  "searching: automatically ignore case
