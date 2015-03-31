@@ -1,2 +1,0 @@
-colorscheme wombat256mod
-
