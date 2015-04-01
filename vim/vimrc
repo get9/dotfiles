@@ -17,8 +17,13 @@ Plugin 'gmarik/Vundle.vim'
 "Rust syntax highlighting
 Plugin 'wting/rust.vim'
 
-"Molokai colorscheme
+"Colorschemes colorscheme
 Bundle 'tomasr/molokai'
+Bundle 'morhetz/gruvbox'
+Bundle 'jordwalke/flatlandia'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'oguzbilgic/sexy-railscasts-theme'
 
 "Finish up vundle setup
 call vundle#end()
@@ -33,7 +38,7 @@ set magic
 syntax on
 set background=dark
 set t_Co=256
-colorscheme molokai
+colorscheme gruvbox
 
 "Searching
 set ignorecase  "searching: automatically ignore case
