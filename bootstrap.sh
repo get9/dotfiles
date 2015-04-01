@@ -36,12 +36,12 @@ fi
 if [ ! -L ~/.vimrc ]
 then
     echo "Linking .vimrc"
-    ln -s "$(pwd)/vim/.vimrc" "$HOME/.vimrc"
+    ln -s "$(pwd)/vim/vimrc" "$HOME/.vimrc"
 fi
 if [ ! -L ~/.vim ]
 then
     echo "Linking .vim directory"
-    ln -s "$(pwd)/vim/.vim" "$HOME/.vim"
+    ln -s "$(pwd)/vim/vim" "$HOME/.vim"
 fi
 
 # bin/ - filled with useful tools.

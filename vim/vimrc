@@ -6,6 +6,28 @@ set backspace=2             "enables normal backspace behavior
 set backspace=indent,eol,start
 set paste                   "enables normal behavior of pasting
 
+"Enable vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+"Let vundle manage vundle (required)
+Plugin 'gmarik/Vundle.vim'
+
+"Rust syntax highlighting
+Plugin 'wting/rust.vim'
+
+"Colorschemes colorscheme
+Bundle 'tomasr/molokai'
+Bundle 'morhetz/gruvbox'
+Bundle 'jordwalke/flatlandia'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'oguzbilgic/sexy-railscasts-theme'
+
+"Finish up vundle setup
+call vundle#end()
+
 "Filetype-specifics (note this HAS to be turned back on for vundle to work)
 filetype plugin indent on
 
@@ -16,7 +38,7 @@ set magic
 syntax on
 set background=dark
 set t_Co=256
-colorscheme molokai
+colorscheme gruvbox
 
 "Searching
 set ignorecase  "searching: automatically ignore case
@@ -45,7 +67,3 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set smarttab
-
-"ctags configuration
-set tags=tags;/     "look for tags folder in current working directory, then look
-                    "all the way up to the root directory
