@@ -46,6 +46,10 @@ if [[ "$platform" == "macosx" ]]; then
     # LaTeX programs
     export PATH=/usr/texbin:$PATH
 
+    # Beast IP
+    export BEASTIP=172.31.40.154
+    beastmode() { ssh -Y skarlage@$BEASTIP; }
+
     # Mac-specific aliases
     alias fix_camera='sudo killall VDCAssistant'
     alias fix_audio='sudo killall coreaudiod'
