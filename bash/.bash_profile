@@ -24,9 +24,6 @@ if [[ "$platform" == "macosx" ]]; then
         # Brew tab-completion
         source "$(brew --prefix grc)/etc/grc.bashrc"
         source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
-
-        # git tab-completion
-        source /usr/local/etc/bash_completion.d/git-completion.bash
     fi
     
     # Ruby gems
