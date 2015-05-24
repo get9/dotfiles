@@ -24,9 +24,6 @@ if [[ "$platform" == "macosx" ]]; then
         # Brew tab-completion
         source "$(brew --prefix grc)/etc/grc.bashrc"
         source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
-
-        # git tab-completion
-        source /usr/local/etc/bash_completion.d/git-completion.bash
     fi
     
     # Ruby gems
@@ -45,6 +42,10 @@ if [[ "$platform" == "macosx" ]]; then
 
     # LaTeX programs
     export PATH=/usr/texbin:$PATH
+
+    # Beast IP
+    export BEASTIP=172.31.40.154
+    beastmode() { ssh -Y skarlage@$BEASTIP; }
 
     # Mac-specific aliases
     alias fix_camera='sudo killall VDCAssistant'
