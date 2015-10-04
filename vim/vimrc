@@ -24,6 +24,7 @@ Bundle 'jordwalke/flatlandia'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'oguzbilgic/sexy-railscasts-theme'
+Bundle 'ervandew/supertab'
 
 "Finish up vundle setup
 call vundle#end()

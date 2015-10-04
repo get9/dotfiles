@@ -23,7 +23,8 @@ if [[ "$platform" == "macosx" ]]; then
     if hash brew 2>/dev/null; then
         # Brew tab-completion
         source "$(brew --prefix grc)/etc/grc.bashrc"
-        source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
+        source "$(brew --repository)/Library/Contributions/brew_bash_completion.sh"
+        source "$(brew --prefix)/etc/bash_completion"
     fi
     
     # Ruby gems
@@ -42,6 +43,9 @@ if [[ "$platform" == "macosx" ]]; then
 
     # LaTeX programs
     export PATH=/usr/texbin:$PATH
+
+    # Homebrew make -j value
+    export HOMEBREW_MAKE_JOBS=4
 
     # Beast IP
     export BEASTIP=172.31.40.154
@@ -70,8 +74,15 @@ fi
 # Everything that's common to all platforms
 export PS1="[\t] \u@\h:\w\n$ "
 
+# Look for man pages in /usr/local/man first
+export MANPATH=/usr/local/man:/usr/local/share/man:/usr/share/man:/usr/man
+source $HOME/.man_colors.sh
+
 # Personal scripts
 export PATH=$HOME/bin:$PATH
+
+# Scala + Intellij IDEA
+export SCALA_HOME=/usr/local/opt/scala/idea
 
 # Aliases
 alias l='ls -lh'

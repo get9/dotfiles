@@ -31,6 +31,10 @@ then
         ln -s $(pwd)/bash/.bash_profile $HOME/.bash_profile
     fi
 fi
+if [ ! -L ~/.man_colors.sh ]; then
+    echo "Linking .man_colors.sh"
+    ln -s $(pwd)/bash/man_colors.sh $HOME/.man_colors.sh
+fi
 
 # vim stuff
 if [ ! -L ~/.vimrc ]
