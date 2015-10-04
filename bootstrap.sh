@@ -27,8 +27,10 @@ then
     echo "Linking .bash_profile"
     if [[ "$platform" == "linux" ]]; then
         ln -s $(pwd)/bash/.bash_profile $HOME/.bashrc
+        ln -s $(pwd)/bash/.bash_aliases $HOME/.bash_aliases
     elif [[ "$platform" == "macosx" ]]; then
         ln -s $(pwd)/bash/.bash_profile $HOME/.bash_profile
+        ln -s $(pwd)/bash/.bash_aliases $HOME/.bash_aliases
     fi
 fi
 if [ ! -L ~/.man_colors.sh ]; then

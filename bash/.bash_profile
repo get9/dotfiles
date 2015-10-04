@@ -48,7 +48,7 @@ if [[ "$platform" == "macosx" ]]; then
     export HOMEBREW_MAKE_JOBS=4
 
     # Beast IP
-    export BEASTIP=172.31.40.154
+    export BEASTIP=172.31.40.90
     beastmode() { ssh -Y skarlage@$BEASTIP; }
 
     # Mac-specific aliases
@@ -85,8 +85,4 @@ export PATH=$HOME/bin:$PATH
 export SCALA_HOME=/usr/local/opt/scala/idea
 
 # Aliases
-alias l='ls -lh'
-alias ll='ls -alh'
-alias u='cd ..'
-alias c='clear'
-alias grep='grep --color=auto'
+source ~/.bash_aliases
