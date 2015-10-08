@@ -25,6 +25,7 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'oguzbilgic/sexy-railscasts-theme'
 Bundle 'ervandew/supertab'
+Bundle 'jiangmiao/auto-pairs'
 
 "Finish up vundle setup
 call vundle#end()
