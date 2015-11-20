@@ -24,5 +24,5 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export SCALA_HOME=/usr/local/opt/scala/idea
 
 # Aliases
-source ~/.bash_aliases
+source ~/.bash_aliases_common
 source ~/.bash_aliases_linux
