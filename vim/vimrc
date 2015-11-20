@@ -36,6 +36,12 @@ call vundle#end()
 "vim-clang options
 let g:clang_cpp_options = '-std=c++14 -stdlib=libc++'
 
+"YCM options
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_confirm_extra_conf = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
+
 "Filetype-specifics (note this HAS to be turned back on for vundle to work)
 filetype plugin indent on
 
@@ -75,3 +81,6 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set smarttab
+
+"Ctags config
+set tags=./tags;/
