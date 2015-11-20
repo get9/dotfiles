@@ -26,38 +26,36 @@ echo "Linking for: $platform"
 if [[ "$platform" == "linux" ]]; then
     if [ ! -f $HOME/.bashrc ]; then
         ln -s $(pwd)/bash/bashrc_linux.sh $HOME/.bashrc
-        ln -s $(pwd)/bash/bash_aliases_linux.sh $HOME/.bash_aliases_linux.sh
+        ln -s $(pwd)/bash/bash_aliases_linux.sh $HOME/.bash_aliases_linux
     fi
 elif [[ "$platform" == "macosx" ]]; then
-    if [! -f $HOME/.bash_profile ]; then
+    if [ ! -f $HOME/.bash_profile ]; then
         ln -s $(pwd)/bash/bashrc_mac.sh $HOME/.bash_profile
-        ln -s $(pwd)/bash/bash_aliases_mac.sh $HOME/.bash_aliases_mac.sh
+        ln -s $(pwd)/bash/bash_aliases_mac.sh $HOME/.bash_aliases_mac
     fi
 fi
 
 # Link common files
 if [ ! -f ~/.man_colors.sh ]; then
     echo "Linking .man_colors.sh"
-    ln -s $(pwd)/bash/man_colors.sh $HOME/.man_colors.sh
+    ln -s $(pwd)/bash/man_colors.sh $HOME/.man_colors
 fi
 if [ ! -f ~/.bash_aliases_common ]; then
-    ln -s $(pwd)/bash/bash_aliases_common.sh $HOME/.bash_aiases_common
+    ln -s $(pwd)/bash/bash_aliases_common.sh $HOME/.bash_aliases_common
+fi
 
 # vim stuff
-if [ ! -f ~/.vimrc ]
-then
+if [ ! -f ~/.vimrc ]; then
     echo "Linking .vimrc"
     ln -s "$(pwd)/vim/vimrc" "$HOME/.vimrc"
 fi
-if [ ! -d ~/.vim ]
-then
+if [ ! -d ~/.vim ]; then
     echo "Linking .vim directory"
     ln -s "$(pwd)/vim/vim" "$HOME/.vim"
 fi
 
 # bin/ - filled with useful tools.
-if [ ! -d ~/bin ]
-then
+if [ ! -d ~/bin ]; then
     echo "Linking bin directory"
     ln -s "$(pwd)/bin" "$HOME/bin"
 fi
