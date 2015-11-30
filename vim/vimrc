@@ -26,8 +26,8 @@ Bundle 'w0ng/vim-hybrid'
 Bundle 'oguzbilgic/sexy-railscasts-theme'
 Bundle 'ervandew/supertab'
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'rdnetto/YCM-Generator'
+autocmd FileType c++ python Bundle 'Valloric/YouCompleteMe'
+autocmd FileType c++ python Bundle 'rdnetto/YCM-Generator'
 Bundle 'craigemery/vim-autotag'
 
 "Finish up vundle setup
