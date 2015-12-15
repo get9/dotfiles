@@ -38,8 +38,10 @@ let g:clang_cpp_options = '-std=c++14 -stdlib=libc++'
 
 "YCM options
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_confirm_extra_conf = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_global_ycm_extra_conf = '$HOME/.ycm_global_ycm_extra_conf'
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 
 "Filetype-specifics (note this HAS to be turned back on for vundle to work)
@@ -84,3 +86,10 @@ set smarttab
 
 "Ctags config
 set tags=./tags;/
+
+"Make copy/paste work in gvim/mvim
+if has("gui_running")
+  vmap <C-S-x> "+x
+  vmap <C-S-c> "+y
+  imap <C-S-v> <Esc>"+gP
+endif
