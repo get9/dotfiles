@@ -28,7 +28,7 @@ export HOMEBREW_MAKE_JOBS=4
 
 # Beast IP
 export BEASTIP=172.31.40.190
-beastmode() { ssh -Y skarlage@$BEASTIP; }
+beastmode() { ssh -Y beast; }
 
 # Everything that's common to all platforms
 export PS1="[\t] \u@\h:\w\n$ "
