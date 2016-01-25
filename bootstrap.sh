@@ -36,7 +36,7 @@ elif [[ "$platform" == "macosx" ]]; then
 fi
 
 # Link common files
-if [ ! -f ~/.man_colors.sh ]; then
+if [ ! -f ~/.man_colors ]; then
     echo "Linking .man_colors.sh"
     ln -s $(pwd)/bash/man_colors.sh $HOME/.man_colors
 fi
