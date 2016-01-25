@@ -4,7 +4,6 @@ set backupdir=~/.vim/backup "directory for ~ files
 set directory=~/.vim/swp    "directory for .swp files
 set backspace=2             "enables normal backspace behavior
 set backspace=indent,eol,start
-set paste                   "enables normal behavior of pasting
 
 "Enable vundle
 filetype off
@@ -19,6 +18,7 @@ Bundle 'morhetz/gruvbox'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'craigemery/vim-autotag'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'rhysd/vim-clang-format'
 
 "Finish up vundle setup
 call vundle#end()
@@ -38,6 +38,10 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
+
+"vim-clang-format options
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format = 1
 
 "Regex
 set magic

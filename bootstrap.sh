@@ -59,3 +59,9 @@ if [ ! -d ~/bin ]; then
     echo "Linking bin directory"
     ln -s "$(pwd)/bin" "$HOME/bin"
 fi
+
+# misc stuff
+if [ ! -f ~/.clang-format ]; then
+    echo "Linking clang-format"
+    ln -s "$(pwd)/clang-format" "$HOME/.clang-format"
+fi
