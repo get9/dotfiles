@@ -20,6 +20,7 @@ Bundle 'craigemery/vim-autotag'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rdnetto/YCM-Generator'
 Bundle 'rhysd/vim-clang-format'
+Bundle 'tomasr/molokai'
 
 "Finish up vundle setup
 call vundle#end()
@@ -51,7 +52,8 @@ set magic
 syntax on
 set background=dark
 set t_Co=256
-colorscheme gruvbox
+let g:molokai_original = 1
+colorscheme molokai
 
 "Searching
 set ignorecase  "searching: automatically ignore case
