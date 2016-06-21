@@ -1,8 +1,7 @@
 # Check if brew is even installed
 if hash brew 2>/dev/null; then
     # Brew tab-completion
-    source "$(brew --prefix grc)/etc/grc.bashrc"
-    source "$(brew --repository)/Library/Contributions/brew_bash_completion.sh"
+    source "$(brew --prefix)/etc/grc.bashrc"
     source "$(brew --prefix)/etc/bash_completion"
 fi
 
