@@ -30,7 +30,6 @@ filetype plugin indent on
 
 "YCM options
 let g:ycm_filetype_whitelist = {
-	\ 'python': 1,
 	\ 'cpp': 1,
 	\ 'c': 1,
 	\ 'h': 1,
@@ -38,15 +37,13 @@ let g:ycm_filetype_whitelist = {
 \ }
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_global_ycm_extra_conf = '$HOME/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/Users/skarlage/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
 
 "vim-clang-format options
 let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
-
-"Regex
-set magic
 
 "Colors
 syntax on
