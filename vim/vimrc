@@ -17,10 +17,12 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'morhetz/gruvbox'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'craigemery/vim-autotag'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'rdnetto/YCM-Generator'
-Bundle 'rhysd/vim-clang-format'
+Plugin 'YouCompleteMe', {'pinned': 1}
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/cctree'
 Bundle 'tomasr/molokai'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'rhysd/vim-clang-format'
 
 "Finish up vundle setup
 call vundle#end()
@@ -29,19 +31,16 @@ call vundle#end()
 filetype plugin indent on
 
 "YCM options
-let g:ycm_filetype_whitelist = {
-	\ 'python': 1,
-	\ 'cpp': 1,
-	\ 'c': 1,
-	\ 'h': 1,
-	\ 'go': 1
-\ }
-let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_global_ycm_extra_conf = '$HOME/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
-"vim-clang-format options
+"Do pyfmt
+autocmd FileType python nnoremap <leader>y :0,$!pyfmt --style=facebook<CR>
+
+""vim-clang-format options
 let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
 
@@ -59,6 +58,7 @@ colorscheme molokai
 set ignorecase  "searching: automatically ignore case
 set smartcase   "searching: if searching for word with caps, disable ignorecase
 set hlsearch
+set incsearch
 
 "Disable that goddamn bell
 set noerrorbells
@@ -77,10 +77,10 @@ set nofoldenable        "disable automatic folding on open. close fold with zc.
 set number              "displays line numbers
 
 "Tab behavior. Set to 4 spaces.
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
-set tabstop=4
-set softtabstop=4
+set tabstop=2
+set softtabstop=2
 set smarttab
 
 "Ctags config
@@ -92,3 +92,11 @@ if has("gui_running")
   vmap <C-S-c> "+y
   imap <C-S-v> <Esc>"+gP
 endif
+
+"Make splits a little more intuitive
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+set splitbelow
+set splitright
