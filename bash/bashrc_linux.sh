@@ -5,7 +5,7 @@ if ! shopt -oq posix; then
     elif [ -f /etc/bash_completion ]; then
         . /etc/bash_completion
     fi
-  fi
+fi
 
 # Everything that's common to all platforms
 export PS1="[\t] \u@\h:\w\n$ "
@@ -16,12 +16,6 @@ source $HOME/.man_colors
 
 # Personal scripts
 export PATH=$HOME/bin:$PATH
-
-# GOROOT
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-
-# Scala + Intellij IDEA
-export SCALA_HOME=/usr/local/opt/scala/idea
 
 # Aliases
 source ~/.bash_aliases_common
