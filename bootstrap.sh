@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu
+
 # Determine platform to set appropriate vars
 # From: http://stackoverflow.com/a/394247
 # Platform detection
@@ -26,23 +28,27 @@ echo "Linking for: $platform"
 if [[ "$platform" == "linux" ]]; then
     if [ ! -f $HOME/.bashrc ]; then
         ln -s $(pwd)/bash/bashrc_linux.sh $HOME/.bashrc
-        ln -s $(pwd)/bash/bash_aliases_linux.sh $HOME/.bash_aliases_linux
     fi
+    [ -f $HOME/.aliases_linux ] && rm $HOME/.aliases_linux
+    ln -s $(pwd)/bash/aliases_linux.sh $HOME/.aliases_linux
 elif [[ "$platform" == "macosx" ]]; then
     if [ ! -f $HOME/.bash_profile ]; then
         ln -s $(pwd)/bash/bashrc_mac.sh $HOME/.bash_profile
-        ln -s $(pwd)/bash/bash_aliases_mac.sh $HOME/.bash_aliases_mac
     fi
+    [ -f $HOME/.aliases_mac ] && rm $HOME/.aliases_mac
+    ln -s $(pwd)/bash/aliases_mac.sh $HOME/.aliases_mac
 fi
 
 # Link common files
-if [ ! -f ~/.man_colors ]; then
-    echo "Linking .man_colors.sh"
-    ln -s $(pwd)/bash/man_colors.sh $HOME/.man_colors
-fi
-if [ ! -f ~/.bash_aliases_common ]; then
-    ln -s $(pwd)/bash/bash_aliases_common.sh $HOME/.bash_aliases_common
-fi
+echo "Linking man colors"
+[ -f $HOME/.man_colors ] && rm $HOME/.man_colors
+ln -s $(pwd)/bash/man_colors.sh $HOME/.man_colors
+echo "Linking common aliases"
+[ -f $HOME/.aliases_common ] && rm $HOME/.aliases_common
+ln -s $(pwd)/bash/aliases_common.sh $HOME/.aliases_common
+echo "Linking common bashrc"
+[ -f $HOME/.bashrc_common ] && rm $HOME/.bashrc_common
+ln -s $(pwd)/bash/bashrc_common.sh $HOME/.bashrc_common
 
 # vim stuff
 if [ ! -f ~/.vimrc ]; then
