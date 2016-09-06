@@ -67,7 +67,9 @@ if [ ! -d ~/bin ]; then
 fi
 
 # misc stuff
-if [ ! -f ~/.clang-format ]; then
-    echo "Linking clang-format"
-    ln -s "$(pwd)/clang-format" "$HOME/.clang-format"
-fi
+echo "Linking clang-format"
+[ -f $HOME/.clang-format ] && rm $HOME/.clang-format
+ln -s "$(pwd)/clang-format" $HOME/.clang-format
+echo "Linking tmux.conf"
+[ -f $HOME/.tmux.conf ] && rm $HOME/.tmux.conf
+ln -s "$(pwd)/tmux.conf" $HOME/.tmux.conf
