@@ -10,13 +10,15 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+"Set mapleader
+let mapleader=","
+
 "Let vundle manage vundle (required)
 Plugin 'gmarik/Vundle.vim'
 
 "Bundle 'tomasr/molokai'
 Bundle 'morhetz/gruvbox'
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'craigemery/vim-autotag'
 Plugin 'YouCompleteMe', {'pinned': 1}
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/cctree'
@@ -37,10 +39,10 @@ let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/local/bin/python3'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 
 "Do pyfmt
-autocmd FileType python nnoremap <leader>y :0,$!pyfmt --style=facebook<CR>
+autocmd FileType python nnoremap <leader>y :0,$!yapf --style=facebook<CR>
 
 ""vim-clang-format options
 let g:clang_format#detect_style_file = 1
