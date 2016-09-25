@@ -13,5 +13,4 @@ export EDITOR=vim
 
 # More prompt stuff
 export CLICOLOR=1
-export GREP_OPTIONS='--color=auto'
 export LSCOLORS=GxFxCxDxBxegedabagaced
