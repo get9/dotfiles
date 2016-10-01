@@ -1,11 +1,16 @@
 # Install homebrew (assumes internet access)
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew_url="https://raw.githubusercontent.com/Homebrew/install/master/install"
+which -s brew
+if [[ $? != 0 ]]; then
+    /usr/bin/ruby -e "$(curl -fsSL $brew_url)"
+fi
 
 # Install required brew formulas
-required_formulas="$cur_dir/required_brew_formulas.txt"
+formulas="$cur_dir/required_brew_formulas.txt"
 while read formula; do
-    brew install "$formala"
-done <"$required_formulas"
+    brew install "$formula"
+done < "$formulas"
 
 # Link bash_profile
-link("bash/bash_macos.sh", "$HOME/.bash_profile")
+bootstrap_link "$cur_dir/bash/bash_macos.sh" "$HOME/.bash_profile"
+bootstrap_link "$cur_dir/bash/alias_macos.sh" "$HOME/.alias_macos"

@@ -2,49 +2,29 @@
 
 set -eu
 
-# Colors
-BLUE="\[\033[0;34m\]"
-LIGHT_BLUE="\[\033[1;34m\]"
-RED="\[\033[0;31m\]"
-LIGHT_RED="\[\033[1;31m\]"
-GREEN="\[\033[0;32m\]"
-LIGHT_GREEN="\[\033[1;32m\]"
-WHITE="\[\033[1;37m\]"
-LIGHT_GRAY="\[\033[0;37m\]"
-RESET_COLOR="\[\033[0m\]""]"
-
 # Save on some shellouts
 cur_dir=$(pwd)
 
-# Function to link $1 --> $2
-# @1: src
-# @2: dest
-# Expected that $src is relative to $PWD
-function link() {
-    src="$1"
-    dest="$2"
-    echo "--> $src"
-
-    # Different behavior depending on whether $src is a file or dir
-    if [[ -f "$src" ]]; then
-        if [[ ! -f "$HOME/$dest" ]]; then
-            ln -s "$src" "$dest"
-        else
-            did_not_link("$src")
-        fi
-    elif [[ -d "$src" ]]; then
-        if [[ ! -d "$HOME/$dest" ]]; then
-            ln -s "$src" "$dest"
-        else
-            did_not_link("$src")
-        fi
-    fi
-}
-
-# Did not link message
+# Did not bootstrap_link message
+# @1: file to display in message
 function did_not_link() {
     file="$1"
-    echo "$RED Did not link $file, already exists$RESET_COLOR"
+    echo "Did not bootstrap_link $file, already exists"
+}
+
+# Function to bootstrap_link $1 --> $2
+# Expected that $src is relative to $PWD
+function bootstrap_link() {
+    src="$1"
+    dest="$2"
+    echo "$src --> $dest"
+
+    # Different behavior depending on whether $src is a file or dir
+    if [[ -f "$dest" || -d "$dest" || -L "$dest" ]]; then
+        did_not_link "$src"
+    else
+        ln -s "$src" "$dest"
+    fi
 }
 
 # Platform detection
@@ -69,19 +49,19 @@ fi
 
 # Common files
 echo "Linking common files"
-link("bash/man_colors.sh", "$HOME/.man_colors")
-link("bash/alias_common.sh", "$HOME/.alias_common")
-link("bash/bash_common.sh", "$HOME/.bash_common")
-link("clang-format", "$HOME/.clang-format")
-link("tmux.conf", "$HOME/.tmux.conf")
-link("bin/", "$HOME/bin")
+bootstrap_link "$cur_dir/bash/man_colors.sh" "$HOME/.man_colors"
+bootstrap_link "$cur_dir/bash/alias_common.sh" "$HOME/.alias_common"
+bootstrap_link "$cur_dir/bash/bash_common.sh" "$HOME/.bash_common"
+bootstrap_link "$cur_dir/clang-format" "$HOME/.clang-format"
+bootstrap_link "$cur_dir/tmux.conf" "$HOME/.tmux.conf"
+bootstrap_link "$cur_dir/bin/" "$HOME/bin"
 
 # Vim
 echo "Linking vim files"
-link("vim/vimrc", "$HOME/.vimrc")
-link("vim/vim", "$HOME/.vim")
+bootstrap_link "$cur_dir/vim/vimrc", "$HOME/.vimrc"
+bootstrap_link "$cur_dir/vim/vim", "$HOME/.vim"
 
-# Link platform-specific profiles
+# bootstrap_link platform-specific profiles
 echo "Linking for: $platform"
 if [[ "$platform" == "linux" ]]; then
     source "$cur_dir/bootstrap_linux.sh"

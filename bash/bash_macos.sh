@@ -1,11 +1,9 @@
-# Pre regular bash
+# Pre script 
 if [[ -f "$HOME/.bash_pre" ]]; then
     source "$HOME/.bash_pre"
 fi
 
-# Check if brew is even installed
-# Assume bootstrap setup brew
-# Brew tab-completion
+# Assume bootstrap setup brew. Source for bash tab-completion
 source "$(brew --prefix)/etc/grc.bashrc"
 source "$(brew --prefix)/etc/bash_completion"
 
@@ -22,7 +20,7 @@ source "$HOME/.alias_macos"
 # Common bash things
 source "$HOME/.bash_common"
 
-# Post regular bash
+# Post script
 if [[ -f "$HOME/.bash_post" ]]; then
     source "$HOME/.bash_post"
 fi

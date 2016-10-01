@@ -52,9 +52,8 @@ let g:clang_format#auto_format = 1
 syntax on
 set background=dark
 set t_Co=256
-let g:molokai_original = 1
-colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 
 "Searching
 set ignorecase  "searching: automatically ignore case
