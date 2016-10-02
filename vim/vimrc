@@ -61,7 +61,7 @@ set smartcase   "searching: if searching for word with caps, disable ignorecase
 set hlsearch
 set incsearch
 
-"Disable that goddamn bell
+"Disable bell
 set noerrorbells
 set novisualbell
 set t_vb=
@@ -76,6 +76,7 @@ set foldmethod=indent   "automatic folding based on indentation
 set foldignore=         "enable folding of '#' comments
 set nofoldenable        "disable automatic folding on open. close fold with zc.
 set number              "displays line numbers
+nnoremap <space> za
 
 "Tab behavior. Set to 4 spaces.
 set shiftwidth=4
@@ -86,6 +87,10 @@ set smarttab
 
 "Ctags config
 set tags=./tags;/
+
+"Navigation
+nnoremap j gj
+nnoremap k gk
 
 "Make copy/paste work in gvim/mvim
 if has("gui_running")
