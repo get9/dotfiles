@@ -1,0 +1,4 @@
+google-chrome
+dash
+flux
+bettertouchtool
