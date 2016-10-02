@@ -2,3 +2,4 @@ google-chrome
 dash
 flux
 bettertouchtool
+iterm2

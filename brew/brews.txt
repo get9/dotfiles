@@ -1,3 +1,4 @@
+git
 tmux
 python3
 python2
