@@ -4,3 +4,4 @@ vim/vim/bundle
 vim/vim/swp
 vim/vim/backup
 vim/vim/.netrwhist
+bin/*
