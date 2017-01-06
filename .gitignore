@@ -1,3 +1,6 @@
 **/*.DS_Store
 !vim/vim/bundle/Vundle.vim
 vim/vim/bundle
+vim/vim/swp
+vim/vim/backup
+vim/vim/.netrwhist

@@ -17,14 +17,14 @@ let mapleader=","
 Plugin 'gmarik/Vundle.vim'
 
 "Bundle 'tomasr/molokai'
-Bundle 'morhetz/gruvbox'
-Bundle 'jiangmiao/auto-pairs'
-Plugin 'YouCompleteMe', {'pinned': 1}
-Plugin 'nvie/vim-flake8'
-Plugin 'vim-scripts/cctree'
-Bundle 'tomasr/molokai'
+Plugin 'morhetz/gruvbox'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'tomasr/molokai'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'rhysd/vim-clang-format'
+Plugin 'rust-lang/rust.vim'
 
 "Finish up vundle setup
 call vundle#end()
@@ -32,21 +32,24 @@ call vundle#end()
 "Filetype-specifics (note this HAS to be turned back on for vundle to work)
 filetype plugin indent on
 
+"Autoformatter options
+nnoremap <leader>y :Autoformat<CR>
+let g:formatter_yapf_style = 'facebook'
+
+"Disable fallback to vim retab/autoindent
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+
 "YCM options
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-let g:ycm_global_ycm_extra_conf = '$HOME/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
-
-"Do pyfmt
-autocmd FileType python nnoremap <leader>y :0,$!yapf --style=facebook<CR>
-
-""vim-clang-format options
-let g:clang_format#detect_style_file = 1
-let g:clang_format#auto_format = 1
+let g:ycm_rust_src_path = '/Users/skarlage/wa/rust/src'
 
 "Colors
 syntax on
