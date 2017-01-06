@@ -8,15 +8,15 @@ cur_dir=$(pwd)
 # Did not bootstrap_link message
 # @1: file to display in message
 function did_not_link() {
-    file="$1"
+    local file="$1"
     echo "Did not bootstrap_link $file, already exists"
 }
 
 # Function to bootstrap_link $1 --> $2
 # Expected that $src is relative to $PWD
 function bootstrap_link() {
-    src="$1"
-    dest="$2"
+    local src="$1"
+    local dest="$2"
     echo "$src --> $dest"
 
     # Different behavior depending on whether $src is a file or dir
@@ -58,8 +58,8 @@ bootstrap_link "$cur_dir/bin/" "$HOME/bin"
 
 # Vim
 echo "Linking vim files"
-bootstrap_link "$cur_dir/vim/vimrc", "$HOME/.vimrc"
-bootstrap_link "$cur_dir/vim/vim", "$HOME/.vim"
+bootstrap_link "$cur_dir/vim/vimrc" "$HOME/.vimrc"
+bootstrap_link "$cur_dir/vim/vim" "$HOME/.vim"
 
 # bootstrap_link platform-specific profiles
 echo "Linking for: $platform"
