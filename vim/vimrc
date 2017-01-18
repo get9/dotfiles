@@ -25,6 +25,7 @@ Plugin 'rdnetto/YCM-Generator'
 Plugin 'tomasr/molokai'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'rust-lang/rust.vim'
+Plugin 'python-mode/python-mode'
 
 "Finish up vundle setup
 call vundle#end()
@@ -50,6 +51,15 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 let g:ycm_rust_src_path = '/Users/skarlage/wa/rust/src'
+
+"python-mode options
+let g:pymode_python = 'python3'
+let g:pymode_run = 0
+let g:pymode_rope = 0
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_signs = 1
+nnoremap <leader>l :PymodeLint<CR>
 
 "Colors
 syntax on
@@ -109,3 +119,8 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
+
+"Source from specifics file
+if filereadable('.vimrc_specifics')
+    source '.vimrc_specifics'
+endif
