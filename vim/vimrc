@@ -20,12 +20,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
 Plugin 'tomasr/molokai'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'rust-lang/rust.vim'
 Plugin 'python-mode/python-mode'
+Bundle 'Blackrush/vim-gocode'
 
 "Finish up vundle setup
 call vundle#end()
@@ -35,22 +33,15 @@ filetype plugin indent on
 
 "Autoformatter options
 nnoremap <leader>y :Autoformat<CR>
+let g:formatdef_pyfmt = '"pyfmt --style=facebook"'
+let g:formatters_python = ['pyfmt']
 
 "Disable fallback to vim retab/autoindent
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 
-"YCM options
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
-
 "python-mode options
-let g:pymode_python = 'python3'
 let g:pymode_run = 0
 let g:pymode_rope = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
@@ -117,7 +108,17 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+"Don't wrap text at 80 chars
+set textwidth=0
+
+"Go settings
+augroup au_go_group
+  autocmd!
+  autocmd FileType go set noexpandtab
+  autocmd FileType go set tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
 "Source from specifics file
-if filereadable('.vimrc_specifics')
-    source '.vimrc_specifics'
+if filereadable('$HOME/.vimrc_specifics')
+    source '$HOME/.vimrc_specifics'
 endif
