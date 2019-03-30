@@ -22,8 +22,8 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'tomasr/molokai'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'rust-lang/rust.vim'
 Plugin 'python-mode/python-mode'
+Bundle 'Blackrush/vim-gocode'
 
 "Finish up vundle setup
 call vundle#end()
@@ -33,7 +33,8 @@ filetype plugin indent on
 
 "Autoformatter options
 nnoremap <leader>y :Autoformat<CR>
-let g:formatter_yapf_style = 'facebook'
+let g:formatdef_pyfmt = '"pyfmt --style=facebook"'
+let g:formatters_python = ['pyfmt']
 
 "Disable fallback to vim retab/autoindent
 let g:autoformat_autoindent = 0
@@ -41,7 +42,6 @@ let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 
 "python-mode options
-let g:pymode_python = 'python3'
 let g:pymode_run = 0
 let g:pymode_rope = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
@@ -108,7 +108,17 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+"Don't wrap text at 80 chars
+set textwidth=0
+
+"Go settings
+augroup au_go_group
+  autocmd!
+  autocmd FileType go set noexpandtab
+  autocmd FileType go set tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
 "Source from specifics file
-if filereadable('.vimrc_specifics')
-    source '.vimrc_specifics'
+if filereadable('$HOME/.vimrc_specifics')
+    source '$HOME/.vimrc_specifics'
 endif
