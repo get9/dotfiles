@@ -54,7 +54,6 @@ bootstrap_link "$cur_dir/bash/alias_common.sh" "$HOME/.alias_common"
 bootstrap_link "$cur_dir/bash/bash_common.sh" "$HOME/.bash_common"
 bootstrap_link "$cur_dir/clang-format" "$HOME/.clang-format"
 bootstrap_link "$cur_dir/tmux.conf" "$HOME/.tmux.conf"
-bootstrap_link "$cur_dir/bin/" "$HOME/bin"
 
 # Vim
 echo "Linking vim files"
