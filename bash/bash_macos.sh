@@ -1,11 +1,13 @@
-# Pre script 
+# Pre script
 if [[ -f "$HOME/.bash_pre" ]]; then
     source "$HOME/.bash_pre"
 fi
 
 # Assume bootstrap setup brew. Source for bash tab-completion
-source "$(brew --prefix)/etc/grc.bashrc"
-source "$(brew --prefix)/etc/bash_completion"
+if command -v brew; then
+    source "$(brew --prefix)/etc/grc.bashrc"
+    source "$(brew --prefix)/etc/bash_completion"
+fi
 
 # Homebrew make -j value - set to correct # cores
 export HOMEBREW_MAKE_JOBS=$(sysctl -n hw.ncpu)

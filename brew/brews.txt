@@ -1,6 +1,0 @@
-git
-tmux
-python3
-python2
-vim --with-python3 --with-lua
-the_silver_searcher

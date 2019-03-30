@@ -59,7 +59,14 @@ bootstrap_link "$cur_dir/bin/" "$HOME/bin"
 # Vim
 echo "Linking vim files"
 bootstrap_link "$cur_dir/vim/vimrc" "$HOME/.vimrc"
-bootstrap_link "$cur_dir/vim/vim" "$HOME/.vim"
+if [[ -d "$HOME/.vim/backup" ]]; then
+    echo "Creating .vim/backup"
+    mkdir -p "$HOME/.vim/backup"
+fi
+if [[ -d "$HOME/.vim/swp" ]]; then
+    echo "Creating .vim/swp"
+    mkdir -p "$HOME/.vim/swp"
+fi
 
 # bootstrap_link platform-specific profiles
 echo "Linking for: $platform"
