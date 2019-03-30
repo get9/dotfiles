@@ -1,10 +1,8 @@
 # Pre script
-if [[ -f "$HOME/.bash_pre" ]]; then
-    source "$HOME/.bash_pre"
-fi
+[[ -f "$HOME/.bash_pre" ]] && source "$HOME/.bash_pre"
 
 # Assume bootstrap setup brew. Source for bash tab-completion
-if command -v brew; then
+if command -v brew 2>&1 >/dev/null; then
     source "$(brew --prefix)/etc/grc.bashrc"
     source "$(brew --prefix)/etc/bash_completion"
 fi
@@ -23,6 +21,4 @@ source "$HOME/.alias_macos"
 source "$HOME/.bash_common"
 
 # Post script
-if [[ -f "$HOME/.bash_post" ]]; then
-    source "$HOME/.bash_post"
-fi
+[[ -f "$HOME/.bash_post" ]] && source "$HOME/.bash_post"

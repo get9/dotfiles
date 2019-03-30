@@ -3,7 +3,15 @@
 set -eu
 
 # Save on some shellouts
-cur_dir=$(pwd)
+pwd=$(pwd)
+
+force=0
+while getopts ":f" opt; do
+    case "$opt" in
+        f) force=1
+        ;;
+    esac
+done
 
 # Did not bootstrap_link message
 # @1: file to display in message
@@ -18,6 +26,11 @@ function bootstrap_link() {
     local src="$1"
     local dest="$2"
     echo "$src --> $dest"
+
+    # force link
+    if [[ "$force" == 1 ]]; then
+        rm "$dest"
+    fi
 
     # Different behavior depending on whether $src is a file or dir
     if [[ -f "$dest" || -d "$dest" || -L "$dest" ]]; then
@@ -49,28 +62,36 @@ fi
 
 # Common files
 echo "Linking common files"
-bootstrap_link "$cur_dir/bash/man_colors.sh" "$HOME/.man_colors"
-bootstrap_link "$cur_dir/bash/alias_common.sh" "$HOME/.alias_common"
-bootstrap_link "$cur_dir/bash/bash_common.sh" "$HOME/.bash_common"
-bootstrap_link "$cur_dir/clang-format" "$HOME/.clang-format"
-bootstrap_link "$cur_dir/tmux.conf" "$HOME/.tmux.conf"
+bootstrap_link "$pwd/bash/man_colors.sh" "$HOME/.man_colors"
+bootstrap_link "$pwd/bash/alias_common.sh" "$HOME/.alias_common"
+bootstrap_link "$pwd/bash/bash_common.sh" "$HOME/.bash_common"
+bootstrap_link "$pwd/clang-format" "$HOME/.clang-format"
+bootstrap_link "$pwd/tmux.conf" "$HOME/.tmux.conf"
 
 # Vim
 echo "Linking vim files"
-bootstrap_link "$cur_dir/vim/vimrc" "$HOME/.vimrc"
-if [[ -d "$HOME/.vim/backup" ]]; then
+bootstrap_link "$pwd/vim/vimrc" "$HOME/.vimrc"
+if [[ ! -d "$HOME/.vim/backup" ]]; then
     echo "Creating .vim/backup"
     mkdir -p "$HOME/.vim/backup"
 fi
-if [[ -d "$HOME/.vim/swp" ]]; then
+if [[ ! -d "$HOME/.vim/swp" ]]; then
     echo "Creating .vim/swp"
     mkdir -p "$HOME/.vim/swp"
 fi
 
+# Add vim-plug if needed
+if [[ ! -f "$HOME/.vim/autoload/plug.vim" ]]; then
+    echo "Downloading vim-plug"
+    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+      "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+fi
+
+
 # bootstrap_link platform-specific profiles
 echo "Linking for: $platform"
 if [[ "$platform" == "linux" ]]; then
-    source "$cur_dir/bootstrap_linux.sh"
+    source "$pwd/bootstrap_linux.sh"
 elif [[ "$platform" == "macos" ]]; then
-    source "$cur_dir/bootstrap_macos.sh"
+    source "$pwd/bootstrap_macos.sh"
 fi

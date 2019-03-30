@@ -1,7 +1,5 @@
 # Any preload things first
-if [[ -f "$HOME/.bash_pre" ]]; then
-    source "$HOME/.bash_pre"
-fi
+[[ -f "$HOME/.bash_pre" ]] && source "$HOME/.bash_pre"
 
 # Common bashrc things
 source "$HOME/.bash_common"
@@ -20,6 +18,4 @@ source $HOME/.alias_common
 source $HOME/.alias_linux
 
 # Postload things
-if [[ -f "$HOME/.bash_post" ]]; then
-    source "$HOME/.bash_post"
-fi
+[[ -f "$HOME/.bash_post" ]] && source "$HOME/.bash_post"

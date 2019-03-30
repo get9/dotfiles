@@ -1,47 +1,37 @@
-"Basic editor settings
+" Basic editor settings
 set nocompatible            "disable vi compatibility
 set backupdir=~/.vim/backup "directory for ~ files
 set directory=~/.vim/swp    "directory for .swp files
 set backspace=2             "enables normal backspace behavior
 set backspace=indent,eol,start
 
-"Enable vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-"Set mapleader
+" Set mapleader
 let mapleader=","
 
-"Let vundle manage vundle (required)
-Plugin 'gmarik/Vundle.vim'
+" Various plugins managed by vim-plug. Automatically enabled filetype settings
+" and syntax highlighting.
+call plug#begin('~/.vim/plugged')
+Plug 'morhetz/gruvbox'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Chiel92/vim-autoformat'
+Plug 'tomasr/molokai'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'python-mode/python-mode'
+Plug 'Blackrush/vim-gocode'
+Plug 'rust-lang/rust.vim'
+call plug#end()
 
-"Bundle 'tomasr/molokai'
-Plugin 'morhetz/gruvbox'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'tomasr/molokai'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'python-mode/python-mode'
-Bundle 'Blackrush/vim-gocode'
-
-"Finish up vundle setup
-call vundle#end()
-
-"Filetype-specifics (note this HAS to be turned back on for vundle to work)
-filetype plugin indent on
-
-"Autoformatter options
+" Autoformatter options
 nnoremap <leader>y :Autoformat<CR>
 let g:formatdef_pyfmt = '"pyfmt --style=facebook"'
 let g:formatters_python = ['pyfmt']
 
-"Disable fallback to vim retab/autoindent
+" Disable fallback to vim retab/autoindent
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 
-"python-mode options
+" python-mode options
 let g:pymode_run = 0
 let g:pymode_rope = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
@@ -49,58 +39,57 @@ let g:pymode_lint_cwindow = 1
 let g:pymode_lint_signs = 1
 nnoremap <leader>l :PymodeLint<CR>
 
-"Colors
-syntax on
+" Colors
 set background=dark
 set t_Co=256
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 
-"Searching
-set ignorecase  "searching: automatically ignore case
-set smartcase   "searching: if searching for word with caps, disable ignorecase
+" Searching
+set ignorecase  " searching: automatically ignore case
+set smartcase   " searching: if searching for word with caps, disable ignorecase
 set hlsearch
 set incsearch
 
-"Disable bell
+" Disable bell
 set noerrorbells
 set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
-"Tab completion of filenames
-set wildmode=longest,list,full  "search preferences for tab completion
-set wildmenu            "enable tab completion
+" Tab completion of filenames
+set wildmode=longest,list,full  " search preferences for tab completion
+set wildmenu            " enable tab completion
 
-"Code settings
-set foldmethod=indent   "automatic folding based on indentation
-set foldignore=         "enable folding of '#' comments
-set nofoldenable        "disable automatic folding on open. close fold with zc.
-set number              "displays line numbers
+" Code settings
+set foldmethod=indent   " automatic folding based on indentation
+set foldignore=         " enable folding of '#' comments
+set nofoldenable        " disable automatic folding on open. close fold with zc.
+set number              " displays line numbers
 nnoremap <space> za
 
-"Tab behavior. Set to 4 spaces.
+" Tab behavior. Set to 4 spaces.
 set shiftwidth=4
 set expandtab
 set tabstop=4
 set softtabstop=4
 set smarttab
 
-"Ctags config
+" Ctags config
 set tags=./tags;/
 
-"Navigation
+" Navigation
 nnoremap j gj
 nnoremap k gk
 
-"Make copy/paste work in gvim/mvim
+" Make copy/paste work in gvim/mvim
 if has("gui_running")
   vmap <C-S-x> "+x
   vmap <C-S-c> "+y
   imap <C-S-v> <Esc>"+gP
 endif
 
-"Make splits a little more intuitive
+" Make splits a little more intuitive
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -108,17 +97,17 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-"Don't wrap text at 80 chars
+" Don't wrap text at 80 chars
 set textwidth=0
 
-"Go settings
+" Go settings
 augroup au_go_group
   autocmd!
   autocmd FileType go set noexpandtab
   autocmd FileType go set tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
-"Source from specifics file
+" Source from specifics file
 if filereadable('$HOME/.vimrc_specifics')
     source '$HOME/.vimrc_specifics'
 endif
