@@ -108,6 +108,6 @@ augroup au_go_group
 augroup END
 
 " Source from specifics file
-if filereadable('$HOME/.vimrc_specifics')
-    source '$HOME/.vimrc_specifics'
+if filereadable(glob('~/.vimrc_specifics'))
+    source ~/.vimrc_specifics
 endif
