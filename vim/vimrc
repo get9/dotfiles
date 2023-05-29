@@ -12,12 +12,8 @@ let mapleader=","
 " and syntax highlighting.
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
-Plug 'jiangmiao/auto-pairs'
-Plug 'Chiel92/vim-autoformat'
 Plug 'tomasr/molokai'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'python-mode/python-mode'
-Plug 'Blackrush/vim-gocode'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 

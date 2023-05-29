@@ -92,6 +92,6 @@ fi
 echo "Linking for: $platform"
 if [[ "$platform" == "linux" ]]; then
     source "$pwd/bootstrap_linux.sh"
-elif [[ "$platform" == "macos" ]]; then
+elif [[ "$platform" == "macos" || "$platform" == *"darwin"* ]]; then
     source "$pwd/bootstrap_macos.sh"
 fi
